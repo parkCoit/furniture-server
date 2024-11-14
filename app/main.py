@@ -36,5 +36,9 @@ def read_root():
 
 @app.on_event("startup")
 async def on_startup():
-    print('******************************************1')
-    await init_db()
+    try:
+        print('Starting database initialization...')
+        await init_db()
+    except Exception as e:
+        print(f"Database initialization failed: {e}")
+        raise e

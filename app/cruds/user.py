@@ -19,8 +19,8 @@ class UserCrud(UserBase, ABC):
     def add_user(self, request_user: UserDTO):
         user = User(**request_user.dict())
         print(f"user :::: {user}"
-              f"userid ::: {user.userid}")
-        db_user = User(userid=user.userid, password=user.password, token=user.token)
+              f"userid ::: {user.kakaoid}")
+        db_user = User(kakaoid=user.kakaoid, email=user.email, nickname= user.nickname)
         self.db.add(db_user)
         self.db.commit()
         self.db.refresh(db_user)

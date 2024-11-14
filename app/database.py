@@ -6,10 +6,12 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from .env import HOSTNAME, PORT, USERNAME, PASSWORD, CHARSET, DATABASE, DB_URL
 import pymysql
 
+pymysql.install_as_MySQLdb()
+
 Base = declarative_base()
 engine = create_engine(DB_URL, echo=True)
-pymysql.install_as_MySQLdb()
 conn = pymysql.connect(host=HOSTNAME, port=PORT, user=USERNAME, password=PASSWORD, db=DATABASE, charset=CHARSET)
+
 SessionLocal = scoped_session(sessionmaker(bind=engine, autocommit=False, autoflush=False))
 
 Base.query = SessionLocal.query_property()

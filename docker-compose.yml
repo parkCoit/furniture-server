@@ -2,16 +2,14 @@ version: "3.9"
 
 services:
   db:
-    container_name: furnituredb
+    container_name: furniture_db
     build: ./docker/mysql
     restart: always
     tty: true
     environment:
-      MYSQL_DATABASE: furnituredb
-      MYSQL_ROOT_PASSWORD: coit
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: furniture_db
       MYSQL_ROOT_HOST: root
-    expose:
-      - '3306'
     ports:
       - "3306:3306"
     volumes:
@@ -21,7 +19,7 @@ services:
       - local-net
 
   api:
-    container_name: "furnitureapi"
+    container_name: "furniture_api"
     build: ./docker/api
     ports:
       - "8000:8000"
