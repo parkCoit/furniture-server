@@ -9,7 +9,7 @@ from app.schemas.user import UserDTO
 router = APIRouter()
 
 
-@router.post("/add", status_code=201)
+@router.post("/login", status_code=201)
 async def add_user(dto: UserDTO, db: Session = Depends(get_db)):
     print(dto)
     return JSONResponse(status_code=200,

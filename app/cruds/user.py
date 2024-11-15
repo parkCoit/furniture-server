@@ -18,6 +18,7 @@ class UserCrud(UserBase, ABC):
 
     def add_user(self, request_user: UserDTO):
         user = User(**request_user.dict())
+        print(f"user ==== {user}")
         print(f"user :::: {user}"
               f"userid ::: {user.kakaoid}")
         db_user = User(kakaoid=user.kakaoid, email=user.email, nickname= user.nickname)

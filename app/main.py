@@ -16,7 +16,7 @@ router.include_router(user_router, prefix="/user", tags=["user"])
 router.include_router(furniture_router, prefix="/furniture", tags=["furniture"])
 
 app = FastAPI()
-origins = ["http://localhost:8000"]
+origins = ["http://localhost", "http://localhost:3000"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,

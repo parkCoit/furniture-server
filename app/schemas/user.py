@@ -11,14 +11,16 @@ class UserVo(BaseModel):
 
 
 class UserDTO(UserVo):
-    kakaoid: Optional[str]
-    email: Optional[str]
-    nickname: Optional[str]
+    # kakaoid: Optional[str]
+    # email: Optional[str]
+    # nickname: Optional[str]
+    code : Optional[object]
 
     def __str__(self):
-        return f'userid: {self.kakaoid},' \
-               f'email: {self.email}' \
-               f'nickname: {self.nickname}' \
+        return f'code : {self.code}'
+        # return f'userid: {self.kakaoid},' \
+        #        f'email: {self.email}' \
+        #        f'nickname: {self.nickname}' \
 
 
 

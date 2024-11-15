@@ -13,11 +13,13 @@ class User(Base):
     email = Column(String(50), unique=True, nullable=True)
     nickname = Column(String(50))
 
+    tokens = relationship("UserToken", back_populates="user")
+
     class Config:
         arbitrary_types_allowed = True
 
     def __str__(self):
-        return f'index: {self.userid}, \n '
+        return f'index: {self.kakaoid}, \n '
 
 
 class UserToken(Base):
