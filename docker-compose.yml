@@ -20,6 +20,7 @@ services:
 
   api:
     container_name: "furniture_api"
+    restart: always
     build: ./docker/api
     ports:
       - "8000:8000"
