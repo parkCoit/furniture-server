@@ -11,16 +11,11 @@ class UserVo(BaseModel):
 
 
 class UserDTO(UserVo):
-    # kakaoid: Optional[str]
-    # email: Optional[str]
-    # nickname: Optional[str]
-    code : Optional[object]
+    code: Optional[object]
 
     def __str__(self):
         return f'code : {self.code}'
-        # return f'userid: {self.kakaoid},' \
-        #        f'email: {self.email}' \
-        #        f'nickname: {self.nickname}' \
+
 
 
 
@@ -31,7 +26,7 @@ class UserTokenVo(BaseModel):
 
 
 class UserTokenDTO(UserVo):
-    kakaoid: str
+    kakao_id: str
     access_token: str
     refresh_token: str
     access_token_expiry: datetime
