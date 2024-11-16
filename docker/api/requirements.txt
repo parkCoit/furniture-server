@@ -1,8 +1,10 @@
+asyncpg
 fastapi
 fastapi_sqlalchemy
 uvicorn
 sqlalchemy
 databases
-asyncpg
+requests
+PyJWT
 psycopg2-binary
 pymysql
