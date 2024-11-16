@@ -4,7 +4,7 @@ from fastapi import HTTPException
 from sqlalchemy.orm import Session
 
 from app.bases.furniture import FurnitureBase
-from app.entities.furniture import Furniture
+from app.models.furniture import Furniture
 from app.schemas.furniture import FurnitureDTO
 
 
