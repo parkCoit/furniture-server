@@ -20,9 +20,9 @@ venv
 docs.zip
 archive.zip
 # 추가
-app/database.py
-app/env.py
-app/admin/security.py
+database.py
+env.py
+security.py
 
 # vim temporary files
 *~
