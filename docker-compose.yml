@@ -9,7 +9,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: furniture_db
-      MYSQL_ROOT_HOST: root
+      MYSQL_USER: coit
+      MYSQL_PASSWORD: coit
+      MYSQL_ROOT_HOST: '%'
     ports:
       - "3306:3306"
     volumes:
