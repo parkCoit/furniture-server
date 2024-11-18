@@ -1,4 +1,5 @@
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
 import jwt
 import requests
@@ -56,12 +57,12 @@ class UserServices(object):
             return kakao_user
 
     def get_jwt(self, user_info):
-        dt = str(datetime.now())
+        dt = str(datetime.now(ZoneInfo("Asia/Seoul")))
         encoded_jwt = jwt.encode(
             {'kakao_id': user_info['kakao_id'], 'email': user_info['email'], 'nickname': user_info['nickname'],
              'created_at': dt},
             KAKAO_SECRET_KEY, algorithm=ALGORITHM)
-        kakao_token = {"access_token": encoded_jwt}
+        kakao_token = {"kakao_id": user_info['kakao_id'], "access_token": encoded_jwt, "created_at": dt}
         payload = jwt.decode(encoded_jwt, KAKAO_SECRET_KEY,
                              algorithms=ALGORITHM)
         print(payload)

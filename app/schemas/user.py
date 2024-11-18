@@ -28,14 +28,14 @@ class UserTokenVo(BaseModel):
 class UserTokenDTO(UserVo):
     kakao_id: str
     access_token: str
-    refresh_token: str
-    access_token_expiry: datetime
-    refresh_token_expiry: datetime
     created_at: datetime
+    # refresh_token: str
+    # access_token_expiry: datetime
+    # refresh_token_expiry: datetime
 
     def __str__(self):
         return f'kakaoid: {self.kakaoid}, access_token: {self.access_token}, ' \
-               f'refresh_token: {self.refresh_token}, ' \
                f'access_token_expiry: {self.access_token_expiry}, ' \
-               f'refresh_token_expiry: {self.refresh_token_expiry}'
+               # f'refresh_token: {self.refresh_token}, ' \
+               # f'refresh_token_expiry: {self.refresh_token_expiry}'
 
