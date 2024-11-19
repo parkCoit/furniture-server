@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends
+from fastapi.encoders import jsonable_encoder
 from sqlalchemy.orm import Session
 from starlette.responses import JSONResponse
 
@@ -12,9 +13,10 @@ router = APIRouter()
 @router.post("/login", status_code=201)
 async def add_user(dto: UserDTO, db: Session = Depends(get_db)):
     print(dto)
+    user_token_dto = UserCrud(db).add_user(request_user=dto).dict()
     return JSONResponse(status_code=200,
                         content=dict(
-                            msg=UserCrud(db).add_user(request_user=dto)
+                            msg=jsonable_encoder(user_token_dto)
                         ))
 
 

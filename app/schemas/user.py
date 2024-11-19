@@ -7,6 +7,7 @@ from pydantic import BaseModel
 class UserVo(BaseModel):
     class Config:
         arbitrary_types_allowed = True
+        from_attributes = True
         orm_mode = True
 
 
@@ -16,12 +17,10 @@ class UserDTO(UserVo):
     def __str__(self):
         return f'code : {self.code}'
 
-
-
-
 class UserTokenVo(BaseModel):
     class Config:
         arbitrary_types_allowed = True
+        from_attributes = True
         orm_mode = True
 
 

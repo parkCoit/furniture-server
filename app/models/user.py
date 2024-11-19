@@ -18,6 +18,8 @@ class User(Base):
 
     class Config:
         arbitrary_types_allowed = True
+        from_attributes = True
+        orm_mode = True
 
     def __str__(self):
         return f'index: {self.kakao_id}, \n '
@@ -34,6 +36,8 @@ class UserToken(Base):
 
     class Config:
         arbitrary_types_allowed = True
+        from_attributes = True
+        orm_mode = True
 
     def __str__(self):
         return f'index: {self.userid}, \n '

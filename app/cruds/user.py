@@ -1,4 +1,3 @@
-from uuid import uuid4
 
 import pymysql
 from sqlalchemy import exists
@@ -7,7 +6,7 @@ from sqlalchemy.orm import Session
 from abc import ABC
 from app.bases.user import UserBase
 from app.models.user import User, UserToken
-from app.schemas.user import UserDTO
+from app.schemas.user import UserDTO, UserTokenDTO
 from app.services.user import UserServices
 
 pymysql.install_as_MySQLdb()
@@ -44,13 +43,15 @@ class UserCrud(UserBase, ABC):
                 db.commit()
                 db.refresh(db_kakao_user)
                 db.refresh(db_kakao_token)
-                return '회원 가입 완료!'
+                saved_token = db.query(UserToken).filter_by(access_token=db_kakao_token.access_token).first()
+                return UserTokenDTO.from_orm(saved_token)
 
             else:
                 db.add(db_kakao_token)
                 db.commit()
                 db.refresh(db_kakao_token)
-                return '토큰 생성 완료!'
+                saved_token = db.query(UserToken).filter_by(access_token=db_kakao_token.access_token).first()
+                return UserTokenDTO.from_orm(saved_token)
 
     def find_kakao_exists(self, kakao_id: str):
         return self.db.query(exists().where(User.kakao_id == kakao_id)).scalar()
